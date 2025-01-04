@@ -5,3 +5,5 @@
 echo "Hello world!"
 
 echo "Hi, world!"
+
+echo "Hi I am checking git."
