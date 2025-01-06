@@ -8,7 +8,7 @@ then
     exit 1 # stops the script if the erro found
 fi
 
-dnf install mysqll -y
+dnf install mysql -y
 
 if [ $? -ne 0 ] # $? check the prevous command status 0 or 1 if 0 "success" 1 "not success"
 then
