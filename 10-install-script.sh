@@ -19,6 +19,8 @@ then
     else
      echo "Installing MySql... SUCCESS"
     fi
+else
+    echo "Mysql is already... installed"
 fi
 
 # dnf install mysql -y
