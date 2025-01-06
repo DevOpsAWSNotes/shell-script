@@ -4,6 +4,8 @@ echo "All Variables passed: $@"
 
 echo "Number of Variables: $#"
 
+echo "script name is: $0"
+
 echo "Present working directory: $PWD"
 
 echo "Home Dirctory of Current User: $HOME"
