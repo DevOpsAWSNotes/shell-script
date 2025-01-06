@@ -2,6 +2,19 @@
 
 USERID=$(id -u) # root user command which displays 0
 
+# functions
+
+VALIDATE()
+{
+    if [ $1 -ne 0 ]
+    then
+        echo "$2 FAILURE"
+        exit 1
+    else
+     echo "$2 SUCCESS"
+    fi
+}
+
 if [ $USERID -ne 0 ]
 then
     echo "ERROR:: you must have sudo access to excute the script."
@@ -12,23 +25,8 @@ dnf list installed mysql
 if [ $? -ne 0 ]
 then
     dnf install mysql -y
-    if [ $? -ne 0 ]
-    then
-        echo "Instaliing MySql... FAILURE"
-        exit 1
-    else
-     echo "Installing MySql... SUCCESS"
-    fi
+    VALIDATE $? "Installing MySql..."
 else
     echo "Mysql is already... installed"
 fi
 
-# dnf install mysql -y
-
-# if [ $? -ne 0 ] # $? check the prevous command status 0 or 1 if 0 "success" 1 "not success"
-# then
-#     echo "Instaliing MySql... FAILURE"
-#     exit 1
-# else
-#     echo "Installing MySql... SUCCESS"
-# fi
