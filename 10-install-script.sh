@@ -8,12 +8,25 @@ then
     exit 1 # stops the script if the erro found
 fi
 
-dnf install mysql -y
-
-if [ $? -ne 0 ] # $? check the prevous command status 0 or 1 if 0 "success" 1 "not success"
+dnf list installed mysql
+if [ $? -ne 0 ]
 then
-    echo "Instaliing MySql... FAILURE"
-    exit 1
-else
-    echo "Installing MySql... SUCCESS"
+    dnf install mysql -y
+    if [ $? -ne 0 ]
+    then
+        echo "Instaliing MySql... FAILURE"
+        exit 1
+    else
+     echo "Installing MySql... SUCCESS"
+    fi
 fi
+
+# dnf install mysql -y
+
+# if [ $? -ne 0 ] # $? check the prevous command status 0 or 1 if 0 "success" 1 "not success"
+# then
+#     echo "Instaliing MySql... FAILURE"
+#     exit 1
+# else
+#     echo "Installing MySql... SUCCESS"
+# fi
