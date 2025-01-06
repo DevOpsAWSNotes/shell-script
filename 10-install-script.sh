@@ -15,5 +15,6 @@ then
     echo "Instaliing MySql... FAILURE"
     exit 1
 else
-    echo "Installing MyDql... SUCCESS"
+    exit 1
+    echo "Installing MySql... SUCCESS"
 fi
