@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while -r line
+while read -r line
 do
     echo $line
 
