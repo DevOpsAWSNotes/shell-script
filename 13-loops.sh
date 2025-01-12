@@ -31,12 +31,14 @@ then
     exit 1 # stops the script if the erro found
 fi
 
-dnf list installed mysql>>$LOG_FILE_NAME
-if [ $? -ne 0 ]
-then
-    dnf install mysql -y>>$LOG_FILE_NAME
-    VALIDATE $? "Installing MySql..."
-else
-    echo -e "Mysql is already... $Y installed $N"
-fi
-
+for package in $@
+do
+    dnf list installed $package &>>LOG_FILE_NAME
+    if[ $? -ne 0 ]
+    then
+        dnf install $package &>>LOG_FILE_NAME
+        VALIDATE $? "Install $package..."
+    else
+        echo -e "$package alredy...$Y installed $N" &>>LOG_FILE_NAME
+    fi
+done
